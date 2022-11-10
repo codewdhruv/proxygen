@@ -79,7 +79,6 @@ pipeline:
                         - zstd
                         - boost
                         - double-conversion
-                        - fmt
                         - gflag
                         - glog
                         - googletest
