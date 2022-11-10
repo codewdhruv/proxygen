@@ -39,6 +39,28 @@ pipeline:
                       items:
                         - ninja
                         - cmake
+                        - zlib
+                        - zstd
+                        - boost
+                        - double-conversion
+                        - fmt
+                        - gflags
+                        - glog
+                        - googletest
+                        - lz4
+                        - openssl
+                        - snappy
+                        - libevent
+                        - autoconf
+                        - automake
+                        - libtool
+                        - gperf
+                        - libsodium
+                        - xz
+                        - folly
+                        - fizz
+                        - mvfst
+                        - wangle
                     maxConcurrency: 2
               - step:
                   type: Run
