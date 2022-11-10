@@ -61,7 +61,7 @@ pipeline:
                         - fizz
                         - mvfst
                         - wangle
-                    maxConcurrency: 2
+                    maxConcurrency: 24
               - step:
                   type: Run
                   name: Fetch cmake
