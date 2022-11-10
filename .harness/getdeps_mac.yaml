@@ -1,0 +1,35 @@
+pipeline:
+  name: getdeps_mac
+  identifier: getdeps_mac
+  projectIdentifier: DhrubaCI
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: dhrubaaccountconnector
+        repoName: proxygen
+        build: <+input>
+  stages:
+    - stage:
+        name: stage
+        identifier: stage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Fetch ninja
+                  identifier: Fetch_ninja
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests ninja
