@@ -1,0 +1,37 @@
+pipeline:
+  name: proxygen-getdeps_linux
+  identifier: proxygengetdeps_linux
+  projectIdentifier: DhrubaCI
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: dhrubaaccountconnector
+        repoName: proxygen
+        build: <+input>
+  stages:
+    - stage:
+        name: build 1
+        identifier: build_1
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Fetch ninja
+                  identifier: Fetch_ninja
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ubuntu-20.04
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests ninja
