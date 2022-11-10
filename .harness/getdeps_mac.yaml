@@ -32,7 +32,7 @@ pipeline:
                   identifier: Fetch_ninja
                   spec:
                     shell: Sh
-                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <stage.variables.fetchstep>
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <+stage.variables.fetchstep>
               - step:
                   type: Run
                   name: Fetch cmake
