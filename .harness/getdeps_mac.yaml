@@ -34,6 +34,12 @@ pipeline:
                     shell: Sh
                     command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <+pipeline.variables.fetchstep>
                   failureStrategies: []
+                  strategy:
+                    repeat:
+                      items:
+                        - ninja
+                        - cmake
+                    maxConcurrency: 2
               - step:
                   type: Run
                   name: Fetch cmake
