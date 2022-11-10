@@ -105,6 +105,21 @@ pipeline:
                   spec:
                     shell: Sh
                     command: python3 build/fbcode_builder/getdeps.py build --src-dir=. proxygen  --project-install-prefix proxygen:/usr/local
+              - step:
+                  type: Run
+                  name: Copy artifacts
+                  identifier: Copy_artifacts
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fixup-dyn-deps --src-dir=. proxygen _artifacts/mac  --project-install-prefix proxygen:/usr/local --final-install-prefix /usr/local
+              - step:
+                  type: Run
+                  name: Test proxygen
+                  identifier: Test_proxygen
+                  spec:
+                    shell: Sh
+                    command: |
+                      python3 build/fbcode_builder/getdeps.py test --src-dir=. proxygen  --project-install-prefix proxygen:/usr/local
   variables:
     - name: fetchstep
       type: String
