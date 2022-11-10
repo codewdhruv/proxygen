@@ -96,6 +96,13 @@ pipeline:
                         - mvfst
                         - wangle
                     maxConcurrency: 2
+              - step:
+                  type: Run
+                  name: Build proxygen
+                  identifier: Build_proxygen
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py build --src-dir=. proxygen  --project-install-prefix proxygen:/usr/local
   variables:
     - name: fetchstep
       type: String
