@@ -31,7 +31,7 @@ pipeline:
                   name: Fetch ninja
                   identifier: Fetch_ninja
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: DhrubajyotiDocker
                     image: ubuntu-20.04
                     shell: Sh
                     command: python3 build/fbcode_builder/getdeps.py fetch --no-tests ninja
