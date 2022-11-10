@@ -62,6 +62,42 @@ pipeline:
                         - mvfst
                         - wangle
                     maxConcurrency: 24
+              - step:
+                  type: Run
+                  name: Build step
+                  identifier: Build_step
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <+repeat.item>
+                  failureStrategies: []
+                  strategy:
+                    repeat:
+                      items:
+                        - ninja
+                        - cmake
+                        - zlib
+                        - zstd
+                        - boost
+                        - double-conversion
+                        - fmt
+                        - gflag
+                        - glog
+                        - googletest
+                        - lz4
+                        - openssl
+                        - snappy
+                        - libevent
+                        - autoconf
+                        - automake
+                        - libtool
+                        - gperf
+                        - libsodium
+                        - xz
+                        - folly
+                        - fizz
+                        - mvfst
+                        - wangle
+                    maxConcurrency: 2
   variables:
     - name: fetchstep
       type: String
