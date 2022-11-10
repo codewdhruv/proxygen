@@ -33,3 +33,60 @@ pipeline:
                   spec:
                     shell: Sh
                     command: python3 build/fbcode_builder/getdeps.py fetch --no-tests ninja
+              - step:
+                  type: Run
+                  name: Fetch cmake
+                  identifier: Fetch_cmake
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests cmake
+              - step:
+                  type: Run
+                  name: Fetch zlib
+                  identifier: Fetch_zlib
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests zlib
+              - step:
+                  type: Run
+                  name: Fetch zstd
+                  identifier: Fetch_zstd
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests zstd
+              - step:
+                  type: Run
+                  name: Fetch boost
+                  identifier: Fetch_boost
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests boost
+              - step:
+                  type: Run
+                  name: Fetch double-conversion
+                  identifier: Fetch_doubleconversion
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests double-conversion
+              - step:
+                  type: Run
+                  name: Fetch fmt
+                  identifier: Fetch_fmt
+                  spec:
+                    shell: Sh
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests fmt
+              - parallel:
+                  - step:
+                      type: Run
+                      name: Fetch gflags
+                      identifier: Fetch_gflags
+                      spec:
+                        shell: Sh
+                        command: python3 build/fbcode_builder/getdeps.py fetch --no-tests gflags
+                  - step:
+                      type: Run
+                      name: Fetch glog
+                      identifier: Fetch_glog
+                      spec:
+                        shell: Sh
+                        command: python3 build/fbcode_builder/getdeps.py fetch --no-tests glog
