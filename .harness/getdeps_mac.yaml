@@ -110,8 +110,15 @@ pipeline:
                   name: Copy artifacts
                   identifier: Copy_artifacts
                   spec:
+                    connectorRef: account.harnessImage
+                    image: actions/upload-artifact@v2
                     shell: Sh
                     command: python3 build/fbcode_builder/getdeps.py fixup-dyn-deps --src-dir=. proxygen _artifacts/mac  --project-install-prefix proxygen:/usr/local --final-install-prefix /usr/local
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - _artifacts
               - step:
                   type: Run
                   name: Test proxygen
