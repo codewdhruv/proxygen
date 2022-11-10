@@ -28,11 +28,11 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Fetch ninja
+                  name: Fetch step
                   identifier: Fetch_ninja
                   spec:
                     shell: Sh
-                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests ninja
+                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <stage.variables.fetchstep>
               - step:
                   type: Run
                   name: Fetch cmake
@@ -90,3 +90,8 @@ pipeline:
                       spec:
                         shell: Sh
                         command: python3 build/fbcode_builder/getdeps.py fetch --no-tests glog
+  variables:
+    - name: fetchstep
+      type: String
+      description: ""
+      value: <+input>
