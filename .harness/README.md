@@ -151,4 +151,4 @@ This is a fork of Proxygen project by Facebook. This project is used for testing
 
 9. Create any other Pull Request with a few source or test file changes. You can consider cherry-picking any of the commits from the main repository.
 
-10. This PR will trigger the Harness CI pipeline (as well as GitHub Actions workflow if enabled in Step-9). Here we are implementing a single workflow for Github Actions. (Get_Deps_Linux)
+10. This PR will trigger the Harness CI pipeline (as well as GitHub Actions workflow if enabled in Step-9). Here we are implementing a single workflow for Github Actions. (Get_Deps_Mac)
