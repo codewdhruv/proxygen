@@ -1,0 +1,16 @@
+inputSet:
+  name: test
+  identifier: test
+  orgIdentifier: default
+  projectIdentifier: DhrubaCI
+  pipeline:
+    identifier: test_proxygen
+    properties:
+      ci:
+        codebase:
+          connectorRef: dhrubaaccountconnector
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
+          repoName: <+input>
